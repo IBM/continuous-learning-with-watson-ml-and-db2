@@ -59,7 +59,7 @@ The setup is done in 3 primary steps.  You will download the code, setup the app
 10. [Test the model](#10-test-the-model)
 
 
-###1. Clone the repo
+### 1. Clone the repo
 
 Clone the `continuous-learning-with-watson-ml-and-db2` locally. In a terminal, run:
 
@@ -68,7 +68,7 @@ $ git clone https://github.com/IBM/continuous-learning-with-watson-ml-and-db2
 $ cd continuous-learning-with-watson-ml-and-db2
 ```
 
-###2. Create Watson Studio Project
+### 2. Create Watson Studio Project
 
 If you do not already have an IBM Cloud account, [sign up for IBM Cloud](https://console.bluemix.net/registration) and login to your IBM cloud account.
 
@@ -87,7 +87,7 @@ Create a new Project by clicking the `New Project` link, choose `Complete`, give
 ![](doc/source/images/watson-studio-3.png)
 
 
-###3. Add and Refine data asset into Watson Studio
+### 3. Add and Refine data asset into Watson Studio
 
 In Watson Studio, go to your project and select the `Assets` tab. From the right navigation panel, click `Browse` to upload your source data that will be used by the machine learning service to create a machine learning model.
 
@@ -99,7 +99,7 @@ Select the uploaded data file (`.csv`). At the top right, click `Refine`. We don
 
 ![](doc/source/images/data-asset-2.png)
 
-###4. Create DB2 warehouse on cloud and add the connection to Watson Studio
+### 4. Create DB2 warehouse on cloud and add the connection to Watson Studio
 
 From the IBM Cloud catalog search for `DB2 Warehouse on Cloud` and create one using the appropriate plan.
 ![](doc/source/images/db2-1.png)
@@ -117,7 +117,7 @@ Select `Db2 Warehouse` from the available options to connect to Db2 warehouse yo
 Configure the connection based on the DB2 credentials you saved earlier.
 ![](doc/source/images/db2-5.png)
 
-###5. Create Apache Spark as a service with IBM Cloud
+### 5. Create Apache Spark as a service with IBM Cloud
 
 From the catalog in IBM Cloud, search for keyword `spark` and choose `Apache Spark` service.
 ![](doc/source/images/spark-1.png)
@@ -133,7 +133,7 @@ Once created, we need to add this service to Watson Studio. Go to your  Watson s
 ![](doc/source/images/spark-5.png)
 
 
-###6. Create Watson Machine Learning with IBM Cloud
+### 6. Create Watson Machine Learning with IBM Cloud
 From the catalog in IBM Cloud, search for keyword `machine learning` and choose `IBM Machine Learning` service.
 ![](doc/source/images/ml-1.png)
 
@@ -142,7 +142,7 @@ Create the service using `lite` plan.
 
 Similar to the previous Step 5, Add the machine learning service you just created to your Watson Studio project.
 
-###7. Add new Watson Machine Learning Model to Watson Studio
+### 7. Add new Watson Machine Learning Model to Watson Studio
 
 From the `Assets` tab of your Watson Studio project, select `+ New Watson Machine Learning Model`
 ![](doc/source/images/wmlm-1.png)
@@ -160,7 +160,7 @@ Once the training and evaluation is done, you can choose the one that performed 
 ![](doc/source/images/wmlm-5.png)
 
 
-###8. Add Feedback data and new evaluations to the continuiously learning model
+### 8. Add Feedback data and new evaluations to the continuiously learning model
 
 Once the Watson Machine Learning Model is saved, select the `Evaluation` tab. First we need to configure the performance monitoring. 
 ![](doc/source/images/wmlm-6.png)
@@ -185,7 +185,7 @@ Once the Watson Machine Learning Model is saved, select the `Evaluation` tab. Fi
 ![](doc/source/images/evaluation_completion-1.png)
 * You can upload new feedback data repeatedly from the provided data [Chicago building inspection data by month 2017](building_inspection_data_by_month_2017.zip) so that the model continuously learns.
 
-###9. Deploy the model to expose it through an API
+### 9. Deploy the model to expose it through an API
 
 * Select the model, and then select `Deployments` tab. Click `+ Add Deployment` to add a new deployment,
 ![](doc/source/images/deployment-1.png)
@@ -194,7 +194,7 @@ Once the Watson Machine Learning Model is saved, select the `Evaluation` tab. Fi
 * Now the model is exposed through and API. If you select `Impelementation` tab you can see differnt examples on how to use the newly created API.
 ![](doc/source/images/deployment-3.png)
 
-###9. Test the model
+### 10. Test the model
 
 You can access and test the API programmatically, or use curl commands. You can also go to the `Test` tab and provide a new set of data to evaluate the inspection status.
 ![](doc/source/images/deployment-test.png)
