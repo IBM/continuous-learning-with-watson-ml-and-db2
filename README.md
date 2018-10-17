@@ -54,7 +54,7 @@ The setup is done in 3 primary steps.  You will download the code, setup the app
 5. [Create Apache Spark as a service with IBM Cloud](#5-create-apache-spark-as-a-service-with-ibm-cloud)
 6. [Create Watson Machine Learning with IBM Cloud](#6-create-watson-machine-learning-with-ibm-cloud)
 7. [Add new Watson Machine Learning Model to Watson Studio](#7-add-new-watson-machine-learning-model-to-watson-studio)
-8. [Add Feedback data and new evaluations to the continuiously learning model](#8-add-feedbasck-data-and-new-evaluatioins-to-the-continuiously-learning-model)
+8. [Add Feedback data and new evaluations to the continuously learning model](#8-add-feedbasck-data-and-new-evaluatioins-to-the-continuously-learning-model)
 9. [Deploy the model to expose it through an API](#9-deploy-the-model-to-expose-it-through-an-api)
 10. [Test the model](#10-test-the-model)
 
@@ -160,7 +160,7 @@ Once the training and evaluation is done, you can choose the one that performed 
 ![](doc/source/images/wmlm-5.png)
 
 
-### 8. Add Feedback data and new evaluations to the continuiously learning model
+### 8. Add Feedback data and new evaluations to the continuously learning model
 
 Once the Watson Machine Learning Model is saved, select the `Evaluation` tab. First we need to configure the performance monitoring. 
 ![](doc/source/images/wmlm-6.png)
