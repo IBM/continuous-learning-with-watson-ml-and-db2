@@ -1,11 +1,10 @@
 # Continuous Learning with WML and IBM DB2 Warehouse on Cloud
 
-In this code pattern, we will use IBM Watson Machine Learning and Watson Studio, which allows data scientists and analysts to quickly build and prototype models, to monitor deployments, and to learn over time as more data become available. Performance Monitoring and Continuous Learning enable machine learning models to retrain on new data supplied by the user or another data source. Then, all of your applications and analysis tools which depend on the model are automatically updated as Watson Studio handles selecting and deploying the best model.
+In this code pattern, we will use IBM Watson Machine Learning and Watson Studio, which allows data scientists and analysts to quickly build and prototype models, to monitor deployments, and to learn over time as more data becomes available. Performance Monitoring and Continuous Learning enables machine learning models to re-train on new data supplied by the user or another data sources. Then, all of your applications and analysis tools which depend on the model are automatically updated as Watson Studio handles selecting and deploying the best model.
 
-In this code pattern, we’ll solve a problem for the City of Chicago using the Model Builder to model building violations. We’ll predict which buildings are most likely to fail buildings inspections. Then, we can intelligently rank the buildings by their likelihood to fail an inspection, saving time and resources for the City and for our inspectors. We’ll start building a model on publicly available data from 2017, starting in September before we introduce October, November, and December data to simulate learning over time.
+In this code pattern, we’ll solve a problem for the City of Chicago using the Model Builder to model building violations. We’ll predict which buildings are most likely to fail an inspection. Then, we can intelligently rank the buildings by their likelihood to fail an inspection, saving time and resources for the city and for our inspectors. We’ll start building a model on publicly available data from 2017, starting in September before we introduce October, November, and December data to simulate learning over time.
 
 When the reader has completed this Code Pattern, they will understand how to:
-
 * Use Watson Studio to create a project and associate services
 * Use IBM Machine learning service to take advantage of machine learning models management (continuous learning system) and deployment (online, batch, streaming)
 * Use Apache Spark-as-a-service cluster computing framework optimized for extremely fast and large scale data processing.
@@ -15,7 +14,6 @@ When the reader has completed this Code Pattern, they will understand how to:
 
 ![Architecture](doc/source/images/architecture.png)
 
-
 1. Input Source Data is loaded into the IBM DB2 warehouse on the cloud.
 2. The source data is then added as data asset into Watson Studio.
 3. The Watson Machine Learning service uses the source data and computes the evaluation using Apache Spark-as-a-service to create a machine learning model and saves the evaluation back to the warehouse.
@@ -23,7 +21,7 @@ When the reader has completed this Code Pattern, they will understand how to:
 5. Feedback data is uploaded to Watson machine learning service to continuously learn and evaluate the new data.
 6. Once the evaluation is done the Watson Machine Learning service creates a machine learning model.
 7. The model data is exposed through an API.
-8. Application can use the API to evaluate new data and create new model based on continuous learning
+8. Application can use the API to evaluate new data and create new model based on continuous learning.
 
 
 ## Included components
@@ -72,9 +70,9 @@ $ cd continuous-learning-with-watson-ml-and-db2
 
 ###2. Create Watson Studio Project
 
-If you do not already have an IBM Cloud account, [sign up for Bluemix](https://console.bluemix.net/registration) and login to your IBM cloud account.
+If you do not already have an IBM Cloud account, [sign up for IBM Cloud](https://console.bluemix.net/registration) and login to your IBM cloud account.
 
-First you will need to create `Object Storage` if you don't already have one. From the catalog, search for `object storage`, select `Object Storage` service, choose the `lite` plan and click `create`.
+First you will need to create an `Object Storage` service if you don't already have one. From the catalog, search for `object storage`, select `Object Storage` service, choose the `lite` plan and click `create`.
 
 ![](doc/source/images/object_storage.png)
 
@@ -84,7 +82,7 @@ Go back to catalog, search for `Watson Studio`, select it, choose the `lite` pla
 
 ![](doc/source/images/watson-studio-2.png)
 
-Create a new Project by clicking the `New Project` link, choose `Complete` , give it a name and click create.
+Create a new Project by clicking the `New Project` link, choose `Complete`, give it a name and click create.
 
 ![](doc/source/images/watson-studio-3.png)
 
@@ -185,11 +183,11 @@ Once the Watson Machine Learning Model is saved, select the `Evaluation` tab. Fi
 
 * You can also see list of evaluations that has been completed and see how the model has been continuously learning
 ![](doc/source/images/evaluation_completion-1.png)
-* You can upload new feedback data repeatedly from the provided data [Chicago building inspection data by month 2017](building_inspection_data_by_month_2017.zip)  so that the model cointinuously learns.
+* You can upload new feedback data repeatedly from the provided data [Chicago building inspection data by month 2017](building_inspection_data_by_month_2017.zip) so that the model continuously learns.
 
 ###9. Deploy the model to expose it through an API
 
-* Select the model, and select `Deployments` tab. click `+ Add Deployment` to add a new deployment,
+* Select the model, and then select `Deployments` tab. Click `+ Add Deployment` to add a new deployment,
 ![](doc/source/images/deployment-1.png)
 * Provide a name and choose `Web Service` as deployment type.
 ![](doc/source/images/deployment-2.png)
@@ -198,16 +196,16 @@ Once the Watson Machine Learning Model is saved, select the `Evaluation` tab. Fi
 
 ###9. Test the model
 
-To test the API, either you can use `curl` commands or through programming to access the API. You can also go to the `Test` tab and provide new set of data to evaluate the inspection status.
+You can access and test the API programmatically, or use curl commands. You can also go to the `Test` tab and provide a new set of data to evaluate the inspection status.
 ![](doc/source/images/deployment-test.png)
 
-The result of the evaluation is shown at the right part of the page with horizontal graph.
+The result of the evaluation is shown in a horizontal graph located on the right side of the page.
 
 ![](doc/source/images/deployment-test-1.png)
 
 ## Troubleshooting
 
-If the evaluation gives an error as below, you need to upgrade the `Machine Learning` service instance to `Standard` plan
+If the evaluation gives an error as shown below, you need to upgrade the `Machine Learning` service instance to the `Standard`.
 ![](doc/source/images/troubleshooting-1.png)
 
 
