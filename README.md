@@ -1,6 +1,6 @@
 # Continuous Learning with WML and IBM DB2 Warehouse on Cloud
 
-In this code pattern, we will use IBM Watson Machine Learning and Watson Studio, which allows data scientists and analysts to quickly build and prototype models, to monitor deployments, and to learn over time as more data becomes available. Performance Monitoring and Continuous Learning enables machine learning models to re-train on new data supplied by the user or another data sources. Then, all of your applications and analysis tools which depend on the model are automatically updated as Watson Studio handles selecting and deploying the best model.
+In this code pattern, we will use IBM Watson Machine Learning and Watson Studio, which allows data scientists and analysts to quickly build and prototype models, to monitor deployments, and to learn over time as more data becomes available. Performance Monitoring and Continuous Learning enables machine learning models to re-train on new data supplied by the user or other data sources. Then, all of your applications and analysis tools which depend on the model are automatically updated as Watson Studio handles selecting and deploying the best model.
 
 In this code pattern, we’ll solve a problem for the City of Chicago using the Model Builder to model building violations. We’ll predict which buildings are most likely to fail an inspection. Then, we can intelligently rank the buildings by their likelihood to fail an inspection, saving time and resources for the city and for our inspectors. We’ll start building a model on publicly available data from 2017, starting in September before we introduce October, November, and December data to simulate learning over time.
 
@@ -89,11 +89,11 @@ Create a new Project by clicking the `New Project` link, choose `Complete`, give
 
 ###3. Add and Refine data asset into Watson Studio
 
-In Watson Studio, go to your project and select `Assets` tab. And from the right navigation panel, click `Browse` to upload your source data that will be used by the machine learning service to create a machine learning model.
+In Watson Studio, go to your project and select the `Assets` tab. From the right navigation panel, click `Browse` to upload your source data that will be used by the machine learning service to create a machine learning model.
 
 ![](doc/source/images/data-asset-1.png)
 
-Select the uploaded data file (`.csv`). At the top right, click Refine. We don't need to manipulate the data, so simply click the "run" button labeled with a ▶ icon at the top right. The data flow output will show that you're creating a CSV file, which will be saved into your object storage bucket. Click Save and Run.
+Select the uploaded data file (`.csv`). At the top right, click `Refine`. We don't need to manipulate the data, so simply click the "run" button labeled with a ▶ icon at the top right. The data flow output will show that you're creating a CSV file, which will be saved into your object storage bucket. Click `Save and Run`.
 
 ![](doc/source/images/data-asset-3.png)
 
@@ -101,20 +101,20 @@ Select the uploaded data file (`.csv`). At the top right, click Refine. We don't
 
 ###4. Create DB2 warehouse on cloud and add the connection to Watson Studio
 
-From the catalog search for `DB2 Warehouse on Cloud` and create one using the appropriate plan.
+From the IBM Cloud catalog search for `DB2 Warehouse on Cloud` and create one using the appropriate plan.
 ![](doc/source/images/db2-1.png)
 
-Once the service is created, create new credentials from `Service Credentials` from left navigation panel. Make sure to save the credentials for upcoming steps.
+Once the service is created, create new credentials by selecting `Service Credentials` option in the left navigation panel. Make sure to save the credentials for upcoming steps.
 
 ![](doc/source/images/db2-2.png)
 
-Then from Watson Studio project that you have created earlier, got to `+ Add to Project` and choose `Connection` 
+From Watson Studio project that you have created earlier, go to `+ Add to Project` and choose `Connection` 
 ![](doc/source/images/db2-3.png)
 
 Select `Db2 Warehouse` from the available options to connect to Db2 warehouse you created earlier.
 ![](doc/source/images/db2-4.png)
 
-And configure the connection based on the DB2 credentials you saved earlier.
+Configure the connection based on the DB2 credentials you saved earlier.
 ![](doc/source/images/db2-5.png)
 
 ###5. Create Apache Spark as a service with IBM Cloud
@@ -122,7 +122,7 @@ And configure the connection based on the DB2 credentials you saved earlier.
 From the catalog in IBM Cloud, search for keyword `spark` and choose `Apache Spark` service.
 ![](doc/source/images/spark-1.png)
 
-and create the service using `lite` plan.
+Create the service using `lite` plan.
 ![](doc/source/images/spark-2.png)
 
 Once created, we need to add this service to Watson Studio. Go to your  Watson studio project, select `settings` and from the `+ Add Service` dropdown list, select `spark` and add the existing spark service that you have just created.
@@ -137,26 +137,26 @@ Once created, we need to add this service to Watson Studio. Go to your  Watson s
 From the catalog in IBM Cloud, search for keyword `machine learning` and choose `IBM Machine Learning` service.
 ![](doc/source/images/ml-1.png)
 
-and create the service using `lite` plan.
+Create the service using `lite` plan.
 ![](doc/source/images/ml-2.png)
 
-Similarly like in Step 5, Add the machine learning service you just created to your Watson Studio project.
+Similar to the previous Step 5, Add the machine learning service you just created to your Watson Studio project.
 
 ###7. Add new Watson Machine Learning Model to Watson Studio
 
-From your Watson Studio project, Assets tab, select `+ New Watson Machine Learning Model`
+From the `Assets` tab of your Watson Studio project, select `+ New Watson Machine Learning Model`
 ![](doc/source/images/wmlm-1.png)
 
-Provide a name, choose the `Machine Learning` and `Apache Spark` instance that you added to your project, choose `Model Builder` for model type and `Manual` so that you can prepare your own data and click `Create`
+Provide a name, choose the `Machine Learning` and `Apache Spark` instance that you added to your project, choose `Model Builder` for model typ, choose `Manual` so that you can prepare your own data and click `Create`.
 ![](doc/source/images/wmlm-2.png)
 
 Select the `data asset` (in our case its a .csv file)
 ![](doc/source/images/wmlm-3.png)
 
-Once the data is loaded, choose the `INSPECTION_STATUS` as the column to predict for new set of data and `All` for feature columns. We will be using `Binary Classification`. Add Estiimators by clicking the `+ Add Estimators` link, and in our case we will be using `Logistic Regression` and `Decision Tree Classifier`. YOu can select others as well based on what kind of estimator algorithm you want to choose.
+Once the data is loaded, choose the `INSPECTION_STATUS` as the column to predict for new set of data and `All` for feature columns. We will be using `Binary Classification`. Add Estiimators by clicking the `+ Add Estimators` link, and in our case we will be using `Logistic Regression` and `Decision Tree Classifier`. You can select others as well based on what kind of estimator algorithm you want to choose.
 ![](doc/source/images/wmlm-4.png)
 
-Once the training and evaluation is done, you can choose the best performed one and click `Save`.
+Once the training and evaluation is done, you can choose the one that performed the best and then click `Save`.
 ![](doc/source/images/wmlm-5.png)
 
 
@@ -166,10 +166,10 @@ Once the Watson Machine Learning Model is saved, select the `Evaluation` tab. Fi
 ![](doc/source/images/wmlm-6.png)
 * Select the `Configure Performance Monitoring` link
 ![](doc/source/images/wmlm-7.png)
-* Add the spark service you added to watson studio project
-* Choose `areaUnderPR` (performance metric of the model) and select the threshold as 0.8. This means if the performance is under 0.8, the model needs to be retrained using all the source data and new data and hence continuous learning.
+* Add the spark service to your watson studio project
+* Choose `areaUnderPR` (performance metric of the model) and select the threshold as 0.8. This means if the performance is under 0.8, the model needs to be re-trained using all the source data and new data and hence continuous learning.
 * Use `500` as record count and click `Save`.
-* Add the connection by selecting `Select Feedback Reference Data` and select the DB2 connection that you have created in the steps earlier.
+* Add the connection by selecting `Select Feedback Reference Data` and select the DB2 connection that you previously created.
 ![](doc/source/images/feedback-data-2.png)
 
 * Once thats done, now you can add data using `+ Feedback Data`
@@ -181,7 +181,7 @@ Once the Watson Machine Learning Model is saved, select the `Evaluation` tab. Fi
 * When the evaluation is completed we can see where the threshold value lies for this new feedback data.
 ![](doc/source/images/evaluation_completion.png)
 
-* You can also see list of evaluations that has been completed and see how the model has been continuously learning
+* You can also see the list of evaluations that have been completed and see how the model has been continuously learning
 ![](doc/source/images/evaluation_completion-1.png)
 * You can upload new feedback data repeatedly from the provided data [Chicago building inspection data by month 2017](building_inspection_data_by_month_2017.zip) so that the model continuously learns.
 
