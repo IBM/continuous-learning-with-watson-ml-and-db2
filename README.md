@@ -52,16 +52,16 @@ The setup is done in 3 primary steps.  You will download the code, setup the app
 1. [Clone the repo](#1-clone-the-repo)
 2. [Create Watson Studio Project](#2-create-watson-studio-project)
 3. [Add and Refine data asset into Watson Studio](#3-add-and-refine-data-asset-into-watson-studio)
-4. [Create DB2 warehouse on cloud and add the connection to Watson Studio](#3-create-db2-warehouse-on-cloud-and-add-the-connection-to-watson-studio)
-5. [Create Apache Spark as a service with IBM Cloud](#4-create-apache-spark-as-a-service-with-ibm-cloud)
-6. [Create Watson Machine Learning with IBM Cloud](#4-create-watson-machine-learning-with-ibm-cloud)
-7. [Add new Watson Machine Learning Model to Watson Studio](#6-add-new-watson-machine-learning-model-to-watson-studio)
-8. [Add Feedback data and new evaluations to the continuiously learning model](#7-add-feedbasck-data-and-new-evaluatioins-to-the-continuiously-learning-model)
-9. [Deploy the model to expose it through an API](#8-deploy-the-model-to-expose-it-through-an-api)
-10. [Test the model](#9-test-the-model)
+4. [Create DB2 warehouse on cloud and add the connection to Watson Studio](#4-create-db2-warehouse-on-cloud-and-add-the-connection-to-watson-studio)
+5. [Create Apache Spark as a service with IBM Cloud](#5-create-apache-spark-as-a-service-with-ibm-cloud)
+6. [Create Watson Machine Learning with IBM Cloud](#6-create-watson-machine-learning-with-ibm-cloud)
+7. [Add new Watson Machine Learning Model to Watson Studio](#7-add-new-watson-machine-learning-model-to-watson-studio)
+8. [Add Feedback data and new evaluations to the continuiously learning model](#8-add-feedbasck-data-and-new-evaluatioins-to-the-continuiously-learning-model)
+9. [Deploy the model to expose it through an API](#9-deploy-the-model-to-expose-it-through-an-api)
+10. [Test the model](#10-test-the-model)
 
 
-###1. Clone the rep
+###1. Clone the repo
 
 Clone the `continuous-learning-with-watson-ml-and-db2` locally. In a terminal, run:
 
@@ -72,17 +72,19 @@ $ cd continuous-learning-with-watson-ml-and-db2
 
 ###2. Create Watson Studio Project
 
-If you do not already have a IBM Cloud account, [sign up for Bluemix](https://console.bluemix.net/registration).
+If you do not already have an IBM Cloud account, [sign up for Bluemix](https://console.bluemix.net/registration) and login to your IBM cloud account.
 
-Login to IBM Cloud account, from the catalog search for `Watson Studio`, select it, choose the `lite` plan and click `create`.
+First you will need to create `Object Storage` if you don't already have one. From the catalog, search for `object storage`, select `Object Storage` service, choose the `lite` plan and click `create`.
+
+![](doc/source/images/object_storage.png)
+
+Go back to catalog, search for `Watson Studio`, select it, choose the `lite` plan and click `create`.
 
 ![](doc/source/images/watson-studio-1.png)
 
 ![](doc/source/images/watson-studio-2.png)
 
 Create a new Project by clicking the `New Project` link, choose `Complete` , give it a name and click create.
-
-> you might have to create `Cloud Object Storage` if you don't already have one.
 
 ![](doc/source/images/watson-studio-3.png)
 
@@ -93,7 +95,7 @@ In Watson Studio, go to your project and select `Assets` tab. And from the right
 
 ![](doc/source/images/data-asset-1.png)
 
-Select the uploaded data file (.csv). At the top right, click Refine. We don't need to manipulate the data, so simply click the "run" button labeled with a ▶ icon at the top right. The data flow output will show that you're creating a CSV file, which will be saved into your object storage bucket. Click Save and Run.
+Select the uploaded data file (`.csv`). At the top right, click Refine. We don't need to manipulate the data, so simply click the "run" button labeled with a ▶ icon at the top right. The data flow output will show that you're creating a CSV file, which will be saved into your object storage bucket. Click Save and Run.
 
 ![](doc/source/images/data-asset-3.png)
 
