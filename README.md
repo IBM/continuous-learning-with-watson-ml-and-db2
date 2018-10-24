@@ -184,7 +184,7 @@ From the `Assets` tab of your Watson Studio project, select `+ New Watson Machin
 Provide a name, choose the `Machine Learning` and `Apache Spark` instance that you added to your project, choose `Model Builder` for model typ, choose `Manual` so that you can prepare your own data and click `Create`.
 ![](doc/source/images/wmlm-2.png)
 
-Select the `data asset` (in our case its a .csv file)
+Select the `data asset` that you created earlier from the options.
 ![](doc/source/images/wmlm-3.png)
 
 Once the data is loaded, choose the `INSPECTION_STATUS` as the column to predict for new set of data and `All` for feature columns. We will be using `Binary Classification`. Add Estiimators by clicking the `+ Add Estimators` link, and in our case we will be using `Logistic Regression` and `Decision Tree Classifier`. You can select others as well based on what kind of estimator algorithm you want to choose.
