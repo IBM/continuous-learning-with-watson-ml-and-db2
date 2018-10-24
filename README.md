@@ -18,7 +18,7 @@ When the reader has completed this Code Pattern, they will understand how to:
 2. The source data is then loaded, as data asset, into Watson Studio.
 3. The Watson Machine Learning service uses the source data and computes an evaluation using Apache Spark-as-a-service to create a machine learning model, and saves the evaluation information back to the Db2 Warehouse on Cloud database.
 4. Apache Spark-as-a-service to compute the evaluation.
-5. Feedback data is uploaded to Watson machine learning service to continuously learn and evaluate the new data.
+5. Feedback data is uploaded to the feedback table in DB2 warehouse.
 6. Once the evaluation is done the Watson Machine Learning service creates a machine learning model.
 7. The model data is exposed through an API.
 8. Applications can use the API to evaluate new data and create a new model based on continuous learning.
@@ -40,7 +40,7 @@ When the reader has completed this Code Pattern, they will understand how to:
 
 # Watch the Video
 
-[![](http://img.youtube.com/vi/HCVxGMd1RiQ/0.jpg)](https://www.youtube.com/watch?v=HCVxGMd1RiQ)
+coming soon
 
 
 # Steps
@@ -49,14 +49,15 @@ The setup is done in 3 primary steps.  You will download the code, setup the app
 
 1. [Clone the repo](#1-clone-the-repo)
 2. [Create Watson Studio Project](#2-create-watson-studio-project)
-3. [Add and Refine data asset into Watson Studio](#3-add-and-refine-data-asset-into-watson-studio)
-4. [Create a Db2 Warehouse on Cloud database and add the connection to Watson Studio](#4-create-db2-warehouse-on-cloud-and-add-the-connection-to-watson-studio)
-5. [Create Apache Spark as a service with IBM Cloud](#5-create-apache-spark-as-a-service-with-ibm-cloud)
-6. [Create Watson Machine Learning with IBM Cloud](#6-create-watson-machine-learning-with-ibm-cloud)
-7. [Add new Watson Machine Learning Model to Watson Studio](#7-add-new-watson-machine-learning-model-to-watson-studio)
-8. [Add Feedback data and new evaluations to the continuously learning model](#8-add-feedback-data-and-new-evaluations-to-the-continuously-learning-model)
-9. [Deploy the model to expose it through an API](#9-deploy-the-model-to-expose-it-through-an-api)
-10. [Test the model](#10-test-the-model)
+3. [Create DB2 warehouse on cloud and add the connection to Watson Studio](#3-create-db2-warehouse-on-cloud-and-add-the-connection-to-watson-studio)
+4. [Create and load data to DB2 warehouse](#4-create-and-load-data-to-db2-warehouse)
+5. [Add connected asset into Watson Studio](#5-add-connected-asset-into-watson-studio)
+6. [Create Apache Spark as a service with IBM Cloud](#6-create-apache-spark-as-a-service-with-ibm-cloud)
+7. [Create Watson Machine Learning with IBM Cloud](#7-create-watson-machine-learning-with-ibm-cloud)
+8. [Add new Watson Machine Learning Model to Watson Studio](#8-add-new-watson-machine-learning-model-to-watson-studio)
+9. [Add Feedback data and new evaluations to the continuously learning model](#9-add-feedback-data-and-new-evaluations-to-the-continuously-learning-model)
+10. [Deploy the model to expose it through an API](#10-deploy-the-model-to-expose-it-through-an-api)
+11. [Test the model](#11-test-the-model)
 
 
 ### 1. Clone the repo
@@ -87,19 +88,7 @@ Create a new Project by clicking the `New Project` link, choose `Complete`, give
 ![](doc/source/images/watson-studio-3.png)
 
 
-### 3. Add and Refine data asset into Watson Studio
-
-In Watson Studio, go to your project and select the `Assets` tab. From the right navigation panel, click `Browse` to upload your source data that will be used by the machine learning service to create a machine learning model.
-
-![](doc/source/images/data-asset-1.png)
-
-Select the uploaded data file (`.csv`). At the top right, click `Refine`. We don't need to manipulate the data, so simply click the "run" button labeled with a ▶ icon at the top right. The data flow output will show that you're creating a CSV file, which will be saved into your object storage bucket. Click `Save and Run`.
-
-![](doc/source/images/data-asset-3.png)
-
-![](doc/source/images/data-asset-2.png)
-
-### 4. Create a DB2 Warehouse on Cloud database and add the connection to Watson Studio
+### 3. Create DB2 warehouse on cloud and add the connection to Watson Studio
 
 From the IBM Cloud catalog search for `DB2 Warehouse on Cloud` and create one using the appropriate plan.
 ![](doc/source/images/db2-1.png)
@@ -117,7 +106,50 @@ Select `Db2 Warehouse` from the available options to connect to Db2 warehouse yo
 Configure the connection based on the DB2 credentials you saved earlier.
 ![](doc/source/images/db2-5.png)
 
-### 5. Create Apache Spark as a service with IBM Cloud
+### 4. Create and load data to DB2 warehouse
+
+From the IBM DB2 warehouse service page, click `Manage` and  click `Open` to go to `IBM Db2 Warehouse on Cloud` console.
+![](doc/source/images/db2-platform-1.png)
+
+Open the hamburger menu and select `RUN SQL` to open up a SQL editor.
+![](doc/source/images/db2-platform-2.png)
+
+In the sql editor, copy the SQL statement from the ![violations.sql](violations.sql) file and click `Run All` option from the `RUN` drop down list at the top right.
+![](doc/source/images/db2-platform-3.png)
+
+Similarly, copy the SQL statement from the ![violations_feedback.sql](violations_feedback.sql) file into the SQL editor and click `Run All` option from the `RUN` drop down list at the top right.
+![](doc/source/images/db2-platform-4.png)
+
+> Note that `"_training"` column should be lower case in the create statement and in the trigger.
+
+Next we will be loading the `violations` table from a CSV file. Cick `LOAD` from the hamburger menu, which will bring you to a page where you can upload `.csv` file.
+![](doc/source/images/db2-platform-5.png)
+
+Browse the ![buildings_source_inspection_data_2017.csv](buildings_source_inspection_data_2017.csv) from your project directory that you cloned earlier and click `Next`.
+![](doc/source/images/db2-platform-6.png)
+
+Choose the correct `Schema`, table `VIOLATIONS` and click `Next`.
+![](doc/source/images/db2-platform-7.png)
+
+Click `Next` on the next screen and click `Begin Load` to load the source data from the `CSV` file to the `VIOLATIONS` table.
+![](doc/source/images/db2-platform-8.png)
+
+### 5. Add connected asset into Watson Studio
+
+In Watson Studio, go to your project and select the `+ Add to Project` and select `Connected assets` option from the dropdown list.
+
+![](doc/source/images/connected-asset.png)
+
+Provide a name, and click `Select source`
+
+![](doc/source/images/connected-asset-1.png)
+
+Choose the DB2 `database` and the `table` that you created in the previous step. Click `Create`.
+![](doc/source/images/connected-asset-2.png)
+
+In the next screen, click `Create` to create the connected asset which will be used during creating of Watson machine learning model.
+
+### 6. Create Apache Spark as a service with IBM Cloud
 
 From the catalog in IBM Cloud, search for keyword `spark` and choose `Apache Spark` service.
 ![](doc/source/images/spark-1.png)
@@ -133,7 +165,7 @@ Once created, we need to add this service to Watson Studio. Go to your  Watson s
 ![](doc/source/images/spark-5.png)
 
 
-### 6. Create Watson Machine Learning with IBM Cloud
+### 7. Create Watson Machine Learning with IBM Cloud
 From the catalog in IBM Cloud, search for keyword `machine learning` and choose `IBM Machine Learning` service.
 ![](doc/source/images/ml-1.png)
 
@@ -142,7 +174,7 @@ Create the service using `lite` plan.
 
 Similar to the previous Step 5, Add the machine learning service you just created to your Watson Studio project.
 
-### 7. Add new Watson Machine Learning Model to Watson Studio
+### 8. Add new Watson Machine Learning Model to Watson Studio
 
 From the `Assets` tab of your Watson Studio project, select `+ New Watson Machine Learning Model`
 ![](doc/source/images/wmlm-1.png)
@@ -160,15 +192,18 @@ Once the training and evaluation is done, you can choose the one that performed 
 ![](doc/source/images/wmlm-5.png)
 
 
-### 8. Add Feedback data and new evaluations to the continuously learning model
+### 9. Add Feedback data and new evaluations to the continuously learning model
 
 Once the Watson Machine Learning Model is saved, select the `Evaluation` tab. First we need to configure the performance monitoring. 
 ![](doc/source/images/wmlm-6.png)
 * Select the `Configure Performance Monitoring` link
 ![](doc/source/images/wmlm-7.png)
+
 * Add the spark service to your watson studio project
 * Choose `areaUnderPR` (performance metric of the model) and select the threshold as 0.8. This means if the performance is under 0.8, the model needs to be re-trained using all the source data and new data and hence continuous learning.
 * Use `500` as record count and click `Save`.
+* For `Auto Retrain` select  `when model performance is below threshold`
+* For `Auto Deploy` select `when performance is better than previous model`
 * Add the connection by selecting `Select Feedback Reference Data` and select the DB2 connection that you previously created.
 ![](doc/source/images/feedback-data-2.png)
 
@@ -178,14 +213,14 @@ Once the Watson Machine Learning Model is saved, select the `Evaluation` tab. Fi
 * Once the feedback data is loaded, select `New Evaluation` to evaluate the uploaded feedback data. You can unzip the provided data [Chicago building inspection data by month 2017](building_inspection_data_by_month_2017.zip) in the repo and use that monthly inspection data as feedback data.
 ![](doc/source/images/new-evaluation.png)
 
-* When the evaluation is completed we can see where the threshold value lies for this new feedback data.
-![](doc/source/images/evaluation_completion.png)
+* When the evaluation is completed we can see where the threshold value lies for this new feedback data. Diagram below shows that the performance exceeds the threshold value and hence the new version of the model is automatically deployed.
+![](doc/source/images/evaluation_completion-2.png)
 
 * You can also see the list of evaluations that have been completed and see how the model has been continuously learning
 ![](doc/source/images/evaluation_completion-1.png)
 * You can upload new feedback data repeatedly from the provided data [Chicago building inspection data by month 2017](building_inspection_data_by_month_2017.zip) so that the model continuously learns.
 
-### 9. Deploy the model to expose it through an API
+### 10. Deploy the model to expose it through an API
 
 * Select the model, and then select `Deployments` tab. Click `+ Add Deployment` to add a new deployment,
 ![](doc/source/images/deployment-1.png)
@@ -194,7 +229,7 @@ Once the Watson Machine Learning Model is saved, select the `Evaluation` tab. Fi
 * Now the model is exposed through and API. If you select `Impelementation` tab you can see differnt examples on how to use the newly created API.
 ![](doc/source/images/deployment-3.png)
 
-### 10. Test the model
+### 11. Test the model
 
 You can access and test the API programmatically, or use curl commands. You can also go to the `Test` tab and provide a new set of data to evaluate the inspection status.
 ![](doc/source/images/deployment-test.png)
