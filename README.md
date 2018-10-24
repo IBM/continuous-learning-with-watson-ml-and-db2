@@ -28,14 +28,14 @@ When the reader has completed this Code Pattern, they will understand how to:
 
 * [Watson Machine Learning](https://www.ibm.com/cloud/machine-learning): Use trusted data to put machine learning and deep learning models into production. Leverage an automated, collaborative workflow to grow intelligent business applications easily and with more confidencelaborate on building conversational AI solution.
 * [Apache Spark](https://www.ibm.com/cloud/spark): Apache Spark is an open source cluster computing framework optimized for extremely fast and large scale data processing, which you can access via the newly integrated notebook interface IBM Analytics for Apache Spark.
-* [IBM Db2 Warehouse on Cloud](https://www.ibm.com/us-en/marketplace/db2-warehouse): IBM Db2 Warehouse on Cloud is a software-defined data warehouse for private and virtual clouds that support Docker container technology. It is client managed and optimized for fast and flexible deployment with automated scaling to meet agile analytic workloads.
+* [IBM Db2 Warehouse on Cloud](https://www.ibm.com/cloud/db2-warehouse-on-cloud): IBM Db2 Warehouse on Cloud is an elastic, fully managed cloud data warehouse service that's powered by IBM BLU Acceleration® technology for increased performance and optimization of analytics at a massive scale.
 * [Watson Studio](https://www.ibm.com/cloud/watson-studio): IBM Watson Studio provides tools for data scientists, application developers and subject matter experts to collaboratively and easily work with data to build and train models at scale. It gives you the flexibility to build models where your data resides and deploy anywhere in a hybrid environment so you can operationalize data science faster.
 
 ## Featured technologies
 
 * [Artificial Intelligence](https://medium.com/ibm-data-science-experience): Artificial intelligence can be applied to disparate solution spaces to deliver disruptive technologies.
 * [Machine Learning](https://en.wikipedia.org/wiki/Machine_learning): Machine learning is a field of artificial intelligence that uses statistical techniques to give computer systems the ability to "learn" (e.g., progressively improve performance on a specific task) from data, without being explicitly programmed
-* [DB2 Warehouse](https://www.ibm.com/us-en/marketplace/db2-warehouse): IBM Db2 Warehouse is a software-defined data warehouse for private and virtual clouds that support Docker container technology. It is client managed and optimized for fast and flexible deployment with automated scaling to meet agile analytic workloads.
+* [IBM Db2 Warehouse on Cloud](https://www.ibm.com/cloud/db2-warehouse-on-cloud): IBM Db2 Warehouse on Cloud is an elastic, fully managed cloud data warehouse service that's powered by IBM BLU Acceleration technology for increased performance and optimization of analytics at a massive scale.
 * [Continuous Learning](https://en.wikipedia.org/wiki/Incremental_learning): Continuous learning is a method of machine learning, in which input data is continuously used to extend the existing model's knowledge i.e. to further train the model.
 
 # Watch the Video
@@ -50,7 +50,7 @@ The setup is done in 3 primary steps.  You will download the code, setup the app
 1. [Clone the repo](#1-clone-the-repo)
 2. [Create Watson Studio Project](#2-create-watson-studio-project)
 3. [Add and Refine data asset into Watson Studio](#3-add-and-refine-data-asset-into-watson-studio)
-4. [Create DB2 warehouse on cloud and add the connection to Watson Studio](#4-create-db2-warehouse-on-cloud-and-add-the-connection-to-watson-studio)
+4. [Create a Db2 Warehouse on Cloud database and add the connection to Watson Studio](#4-create-db2-warehouse-on-cloud-and-add-the-connection-to-watson-studio)
 5. [Create Apache Spark as a service with IBM Cloud](#5-create-apache-spark-as-a-service-with-ibm-cloud)
 6. [Create Watson Machine Learning with IBM Cloud](#6-create-watson-machine-learning-with-ibm-cloud)
 7. [Add new Watson Machine Learning Model to Watson Studio](#7-add-new-watson-machine-learning-model-to-watson-studio)
@@ -99,7 +99,7 @@ Select the uploaded data file (`.csv`). At the top right, click `Refine`. We don
 
 ![](doc/source/images/data-asset-2.png)
 
-### 4. Create DB2 warehouse on cloud and add the connection to Watson Studio
+### 4. Create a DB2 Warehouse on Cloud database and add the connection to Watson Studio
 
 From the IBM Cloud catalog search for `DB2 Warehouse on Cloud` and create one using the appropriate plan.
 ![](doc/source/images/db2-1.png)
@@ -214,7 +214,7 @@ If the evaluation gives an error as shown below, you need to upgrade the `Machin
 * [IBM Watson Studio](https://dataplatform.cloud.ibm.com/docs/content/getting-started/welcome-main.html) documentation
 * [IBM Secure Gateway](https://console.bluemix.net/docs/services/SecureGateway/index.html) documentation
 * [Docker](https://docs.docker.com/) documentation
-* [Db2](https://www.ibm.com/support/knowledgecenter/SSEPGG_10.5.0/com.ibm.db2.luw.kc.doc/welcome.html) documentation
+* [Db2 Warehouse on Cloud](https://www.ibm.com/support/knowledgecenter/en/SS6NHC/com.ibm.swg.im.dashdb.kc.doc/welcome.html) documentation
 * Related code pattern: [Continuous learning on Db2](https://github.com/IBM/watson-continuous-learning-on-db2)
 * Related video: [Continuous Learning on Watson Data Platform](https://www.youtube.com/watch?v=HCVxGMd1RiQ)
 
