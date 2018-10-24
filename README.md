@@ -122,7 +122,7 @@ Similarly, copy the SQL statement from the ![violations_feedback.sql](violations
 
 > Note that `"_training"` column should be lower case in the create statement and in the trigger.
 
-Next we will be loading the `violations` table from a CSV file. Cick `LOAD` from the hamburger menu, which will bring you to a page where you can upload `.csv` file.
+Next we will be loading the `violations` table from a CSV file. Click `LOAD` from the hamburger menu, which will bring you to a page where you can upload `.csv` file.
 ![](doc/source/images/db2-platform-5.png)
 
 Browse the ![buildings_source_inspection_data_2017.csv](buildings_source_inspection_data_2017.csv) from your project directory that you cloned earlier and click `Next`.
