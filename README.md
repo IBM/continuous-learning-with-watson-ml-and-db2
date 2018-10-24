@@ -201,7 +201,7 @@ Once the Watson Machine Learning Model is saved, select the `Evaluation` tab. Fi
 * Select the `Configure Performance Monitoring` link
 ![](doc/source/images/wmlm-7.png)
 
-* Add the spark service to your watson studio project
+* Add the spark service from the dropdown list. It's the one that you added to your Watson studio project.
 * Choose `areaUnderPR` (performance metric of the model) and select the threshold as 0.8. This means if the performance is under 0.8, the model needs to be re-trained using all the source data and new data and hence continuous learning.
 * Use `500` as record count and click `Save`.
 * For `Auto Retrain` select  `when model performance is below threshold`
