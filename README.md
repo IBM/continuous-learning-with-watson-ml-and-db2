@@ -148,6 +148,8 @@ Choose the DB2 `database` and the `table` that you created in the previous step.
 ![](doc/source/images/connected-asset-2.png)
 
 In the next screen, click `Create` to create the connected asset which will be used during creating of Watson machine learning model.
+![](doc/source/images/connected-asset-3.png)
+
 
 ### 6. Create Apache Spark as a service with IBM Cloud
 
