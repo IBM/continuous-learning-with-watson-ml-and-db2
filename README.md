@@ -16,7 +16,7 @@ When the reader has completed this Code Pattern, they will understand how to:
 
 1. Initial source data is loaded into an IBM Db2 Warehouse on Cloud database.
 2. The source data is then loaded, as data asset, into Watson Studio.
-3. The Watson Machine Learning service uses the source data and computes an evaluation using Apache Spark-as-a-service to create a machine learning model, and saves the evaluation information back to the Db2 Warehouse on Cloud database.
+3. The Watson Machine Learning service uses the source data and computes an evaluation using Apache Spark-as-a-service to create a machine learning model, and saves the evaluation information back to the DB2 Warehouse on Cloud database.
 4. Apache Spark-as-a-service to compute the evaluation.
 5. Feedback data is uploaded to the feedback table in DB2 warehouse.
 6. Once the evaluation is done the Watson Machine Learning service creates a machine learning model.
@@ -50,7 +50,7 @@ The setup is done in 3 primary steps.  You will download the code, setup the app
 1. [Clone the repo](#1-clone-the-repo)
 2. [Create Watson Studio Project](#2-create-watson-studio-project)
 3. [Create DB2 warehouse on cloud and add the connection to Watson Studio](#3-create-db2-warehouse-on-cloud-and-add-the-connection-to-watson-studio)
-4. [Create and load data to DB2 warehouse](#4-create-and-load-data-to-db2-warehouse)
+4. [Create and load data into DB2 warehouse](#4-create-and-load-data-to-db2-warehouse)
 5. [Add connected asset into Watson Studio](#5-add-connected-asset-into-watson-studio)
 6. [Create Apache Spark as a service with IBM Cloud](#6-create-apache-spark-as-a-service-with-ibm-cloud)
 7. [Create Watson Machine Learning with IBM Cloud](#7-create-watson-machine-learning-with-ibm-cloud)
