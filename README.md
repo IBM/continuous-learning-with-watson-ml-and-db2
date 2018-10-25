@@ -14,11 +14,11 @@ When the reader has completed this Code Pattern, they will understand how to:
 
 ![Architecture](doc/source/images/architecture.png)
 
-1. Initial source data is loaded into an IBM Db2 Warehouse on Cloud database.
-2. The source data is then loaded, as data asset, into Watson Studio.
-3. The Watson Machine Learning service uses the source data and computes an evaluation using Apache Spark-as-a-service to create a machine learning model, and saves the evaluation information back to the DB2 Warehouse on Cloud database.
+1. Initial source data is loaded into IBM Db2 Warehouse on Cloud database.
+2. The source data is then loaded, as a data asset, into Watson Studio.
+3. The Watson Machine Learning service uses the source data and computes an evaluation using Apache Spark-as-a-service to create a machine learning model, and saves the evaluation information back to the Db2 Warehouse on Cloud database.
 4. Apache Spark-as-a-service to compute the evaluation.
-5. Feedback data is uploaded to the feedback table in DB2 warehouse.
+5. Feedback data is uploaded to the feedback table in the Db2 Warehouse on Cloud database.
 6. Once the evaluation is done the Watson Machine Learning service creates a machine learning model.
 7. The model data is exposed through an API.
 8. Applications can use the API to evaluate new data and create a new model based on continuous learning.
@@ -45,12 +45,10 @@ coming soon
 
 # Steps
 
-The setup is done in 3 primary steps.  You will download the code, setup the application and then deploy the code to IBM Cloud.  If you would like to run the code locally, there will be one more step to configure the credentials locally.
-
 1. [Clone the repo](#1-clone-the-repo)
 2. [Create Watson Studio Project](#2-create-watson-studio-project)
-3. [Create DB2 warehouse on cloud and add the connection to Watson Studio](#3-create-db2-warehouse-on-cloud-and-add-the-connection-to-watson-studio)
-4. [Create and load data into DB2 warehouse](#4-create-and-load-data-to-db2-warehouse)
+3. [Create Db2 Warehouse on Cloud database and add the connection to Watson Studio](#3-create-db2-warehouse-on-cloud-database-and-add-the-connection-to-watson-studio)
+4. [Create and load data into Db2 Warehouse on Cloud database](#4-create-and-load-data-into-db2-warehouse-on-cloud-database)
 5. [Add connected asset into Watson Studio](#5-add-connected-asset-into-watson-studio)
 6. [Create Apache Spark as a service with IBM Cloud](#6-create-apache-spark-as-a-service-with-ibm-cloud)
 7. [Create Watson Machine Learning with IBM Cloud](#7-create-watson-machine-learning-with-ibm-cloud)
@@ -88,9 +86,9 @@ Create a new Project by clicking the `New Project` link, choose `Complete`, give
 ![](doc/source/images/watson-studio-3.png)
 
 
-### 3. Create DB2 warehouse on cloud and add the connection to Watson Studio
+### 3. Create Db2 Warehouse on Cloud database and add the connection to Watson Studio
 
-From the IBM Cloud catalog search for `DB2 Warehouse on Cloud` and create one using the appropriate plan.
+From the IBM Cloud catalog search for `Db2 Warehouse on Cloud` and create one using the appropriate plan.
 ![](doc/source/images/db2-1.png)
 
 Once the service is created, create new credentials by selecting `Service Credentials` option in the left navigation panel. Make sure to save the credentials for upcoming steps.
@@ -100,15 +98,15 @@ Once the service is created, create new credentials by selecting `Service Creden
 From Watson Studio project that you have created earlier, go to `+ Add to Project` and choose `Connection` 
 ![](doc/source/images/db2-3.png)
 
-Select `Db2 Warehouse` from the available options to connect to Db2 warehouse you created earlier.
+Select `Db2 Warehouse` from the available options to connect to Db2 Warehouse on Cloud database you created earlier.
 ![](doc/source/images/db2-4.png)
 
-Configure the connection based on the DB2 credentials you saved earlier.
+Configure the connection based on the Db2 credentials you saved earlier.
 ![](doc/source/images/db2-5.png)
 
-### 4. Create and load data to DB2 warehouse
+### 4. Create and load data into Db2 Warehouse on Cloud database
 
-From the IBM DB2 warehouse service page, click `Manage` and  click `Open` to go to `IBM Db2 Warehouse on Cloud` console.
+From the IBM Db2 warehouse service page, click `Manage` and  click `Open` to go to `IBM Db2 Warehouse on Cloud` console.
 ![](doc/source/images/db2-platform-1.png)
 
 Open the hamburger menu and select `RUN SQL` to open up a SQL editor.
@@ -144,7 +142,7 @@ Provide a name, and click `Select source`
 
 ![](doc/source/images/connected-asset-1.png)
 
-Choose the DB2 `database` and the `table` that you created in the previous step. Click `Create`.
+Choose the Db2 `database` and the `table` that you created in the previous step. Click `Create`.
 ![](doc/source/images/connected-asset-2.png)
 
 In the next screen, click `Create` to create the connected asset which will be used during creating of Watson machine learning model.
@@ -206,7 +204,7 @@ Once the Watson Machine Learning Model is saved, select the `Evaluation` tab. Fi
 * Use `500` as record count and click `Save`.
 * For `Auto Retrain` select  `when model performance is below threshold`
 * For `Auto Deploy` select `when performance is better than previous model`
-* Add the connection by selecting `Select Feedback Reference Data` and select the DB2 connection that you previously created.
+* Add the connection by selecting `Select Feedback Reference Data` and select the Db2 connection that you previously created.
 ![](doc/source/images/feedback-data-2.png)
 
 * Once thats done, now you can add data using `+ Feedback Data`
