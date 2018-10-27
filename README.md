@@ -226,7 +226,7 @@ Once the Watson Machine Learning Model is saved, select the `Evaluation` tab. Fi
 ![](doc/source/images/deployment-1.png)
 * Provide a name and choose `Web Service` as deployment type.
 ![](doc/source/images/deployment-2.png)
-* Now the model is exposed through and API. If you select `Impelementation` tab you can see differnt examples on how to use the newly created API.
+* Now the model is exposed through and API. If you select `Implementation` tab you can see different examples on how to use the newly created API.
 ![](doc/source/images/deployment-3.png)
 
 ### 11. Test the model
