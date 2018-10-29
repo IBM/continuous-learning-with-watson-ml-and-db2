@@ -40,7 +40,7 @@ When the reader has completed this Code Pattern, they will understand how to:
 
 # Watch the Video
 
-coming soon
+[![](http://img.youtube.com/vi/sIEcqyyOtUk/0.jpg)](https://youtu.be/sIEcqyyOtUk)
 
 
 # Steps
