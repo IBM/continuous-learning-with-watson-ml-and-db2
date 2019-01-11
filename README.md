@@ -69,7 +69,7 @@ $ cd continuous-learning-with-watson-ml-and-db2
 
 ### 2. Create Watson Studio Project
 
-If you do not already have an IBM Cloud account, [sign up for IBM Cloud](https://console.bluemix.net/registration) and login to your IBM cloud account.
+If you do not already have an IBM Cloud account, [sign up for IBM Cloud](https://cloud.ibm.com/registration) and login to your IBM cloud account.
 
 First you will need to create an `Object Storage` service if you don't already have one. From the catalog, search for `object storage`, select `Object Storage` service, choose the `lite` plan and click `create`.
 
@@ -247,7 +247,7 @@ If the evaluation gives an error as shown below, you need to upgrade the `Machin
 ## Links
 
 * [IBM Watson Studio](https://dataplatform.cloud.ibm.com/docs/content/getting-started/welcome-main.html) documentation
-* [IBM Secure Gateway](https://console.bluemix.net/docs/services/SecureGateway/index.html) documentation
+* [IBM Secure Gateway](https://cloud.ibm.com/docs/services/SecureGateway/index.html) documentation
 * [Docker](https://docs.docker.com/) documentation
 * [Db2 Warehouse on Cloud](https://www.ibm.com/support/knowledgecenter/en/SS6NHC/com.ibm.swg.im.dashdb.kc.doc/welcome.html) documentation
 * Related code pattern: [Continuous learning on Db2](https://github.com/IBM/watson-continuous-learning-on-db2)
