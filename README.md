@@ -95,7 +95,7 @@ Once the service is created, create new credentials by selecting `Service Creden
 
 ![](doc/source/images/db2-2.png)
 
-From Watson Studio project that you have created earlier, go to `+ Add to Project` and choose `Connection` 
+From Watson Studio project that you have created earlier, go to `+ Add to Project` and choose `Connection`
 ![](doc/source/images/db2-3.png)
 
 Select `Db2 Warehouse` from the available options to connect to Db2 Warehouse on Cloud database you created earlier.
@@ -194,7 +194,7 @@ Once the training and evaluation is done, you can choose the one that performed 
 
 ### 9. Add Feedback data and new evaluations to the continuously learning model
 
-Once the Watson Machine Learning Model is saved, select the `Evaluation` tab. First we need to configure the performance monitoring. 
+Once the Watson Machine Learning Model is saved, select the `Evaluation` tab. First we need to configure the performance monitoring.
 ![](doc/source/images/wmlm-6.png)
 * Select the `Configure Performance Monitoring` link
 ![](doc/source/images/wmlm-7.png)
