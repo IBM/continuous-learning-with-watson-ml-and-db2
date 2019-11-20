@@ -1,3 +1,6 @@
+# WARNING: This repository is no longer maintained :warning:
+> This repository will not be updated. The repository will be kept available in read-only mode.
+
 # Continuous Learning with Watson Machine Learning and IBM Db2 Warehouse on Cloud
 
 In this code pattern, we will use IBM Watson Machine Learning and Watson Studio &mdash; which allows data scientists and analysts to quickly build and prototype models &mdash; to monitor deployments, and to learn over time as more data becomes available. Performance Monitoring and Continuous Learning enables machine learning models to re-train on new data supplied by the user or other data sources. All applications and analysis tools that depend on the model are automatically updated as Watson Studio handles the selection and deployment of the best model.
